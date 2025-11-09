@@ -150,3 +150,6 @@ footer {
         transform: translateY(-5px);
     }
 }
+.was-validated :invalid ~ .invalid-feedback {
+    display: block !important; 
+}
