@@ -1,0 +1,152 @@
+/* assets/css/style.css */
+
+/* 1. НАСТРОЙКА FLEXBOX (STICKY FOOTER) */
+html, body {
+    height: 100%; 
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; 
+    background-color: #f8f9fa;
+    
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* 2. ОСНОВНОЙ КОНТЕНТ - РАСТЯГИВАЕТСЯ */
+main {
+    flex: 1 0 auto;
+    padding-top: 100px; /* Компенсация для фиксированного хедера */
+    padding-bottom: 40px;
+}
+
+/* 3. ФУТЕР - НЕ РАСТЯГИВАЕТСЯ */
+footer {
+    flex-shrink: 0;
+    margin-top: auto; /* Прижимаем футер к низу */
+}
+
+/* 4. ОБЩИЕ СТИЛИ И КОМПОНЕНТЫ */
+.bg-primary {
+    background-color: #0056b3 !important;
+}
+.bg-dark {
+    background-color: #343a40 !important;
+}
+.bg-secondary-light {
+    background-color: #e9ecef !important; 
+}
+.text-primary {
+    color: #0056b3 !important;
+}
+
+/* Стили для ссылок в меню */
+.navbar-nav .nav-link {
+    font-weight: 500;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+    color: #ffffff !important;
+    border-bottom: 2px solid #ffffff;
+}
+
+/* Стили для Hero секции на главной странице */
+.display-4 {
+    color: #0056b3; 
+    margin-bottom: 20px;
+    font-weight: 800; 
+}
+
+/* Современные Карточки */
+.card {
+    border: none !important; 
+    border-radius: 12px; 
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* АНИМАЦИЯ КАРТОЧЕК ПРЕПОДАВАТЕЛЕЙ */
+.teacher-card {
+    position: relative;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.teacher-card:hover {
+    transform: translateY(-15px) scale(1.03);
+    box-shadow: 0 25px 50px rgba(0, 86, 179, 0.2);
+    z-index: 10;
+}
+
+/* Эффект подъема для всех карточек при наведении */
+.card-hover {
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.card-hover:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* Дополнительные стили для изображений преподавателей */
+.teacher-card .card-img-top {
+    transition: all 0.5s ease;
+    border-radius: 12px 12px 0 0;
+}
+
+.teacher-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+/* Эффект блеска при наведении */
+.teacher-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0, 86, 179, 0.1) 0%, rgba(255, 255, 255, 0) 50%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    border-radius: 12px;
+    z-index: 1;
+}
+
+.teacher-card:hover::before {
+    opacity: 1;
+}
+
+/* Стилизация изображений (для about.html) */
+.card-img-top {
+    width: 100%;
+    aspect-ratio: 1 / 1; 
+    object-fit: cover !important; 
+    border-radius: 12px 12px 0 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    main {
+        padding-top: 80px;
+        padding-bottom: 20px;
+    }
+    .display-4 {
+        font-size: 2.5rem;
+    }
+    
+    /* Уменьшаем эффект подъема на мобильных */
+    .teacher-card:hover {
+        transform: translateY(-8px) scale(1.02);
+    }
+    
+    .card-hover:hover {
+        transform: translateY(-5px);
+    }
+}
